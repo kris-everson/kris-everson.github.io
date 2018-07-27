@@ -1,0 +1,22 @@
+dr legbone's lab pseudocode
+
+
+Walkthrough and pseudocode
+
+//Basic Functionality and gameplay
+- Start game from start screen
+- Load game description and start game
+- Item request/question
+- Drag items to doctor legbone
+Confirm match or mismatch of items
+Provide hint when mismatched
+Shuffle items requested
+Count down items as they’re matched
+Trigger animation after 6 items are matched
+
+
+Features
+- audio
+  - toggle switch
+  - loading and start screen
+  -
