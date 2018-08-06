@@ -12,7 +12,11 @@ class Preloader extends Phaser.State {
     this.load.image('heart', 'assets/sprites/heart.png');
     this.load.image('kidney', 'assets/sprites/kidneys.png');
     this.load.image('brain', 'assets/sprites/brain.png');
+    this.load.image('stomach', 'assets/sprites/stomach.png');
+    this.load.image('teeth', 'assets/sprites/teeth.png');
     this.load.image('lab', 'assets/lab.png');
+    this.load.image('paint', 'assets/sprites/paint.png');
+    this.load.image('screwdriver', 'assets/sprites/screwdriver.png');
     this.load.image('shelf', 'assets/shelf.png');
     this.load.image('monster', 'assets/monster.png');
     this.load.image('lungs', 'assets/sprites/lungs.png');
@@ -22,6 +26,8 @@ class Preloader extends Phaser.State {
     this.load.image('goodJobDr', 'assets/sprites/goodJobDr.png');
     this.load.image('letsGetStarted', 'assets/lets-get-started.png');
     this.load.image('speechBubble', 'assets/speech-bubble.png');
+    this.load.image('mute', 'assets/sprites/audio.png');
+    this.load.image('help', 'assets/sprites/help-icon.png');
 
   }
 

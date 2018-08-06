@@ -13,17 +13,23 @@ class PrePlay extends Phaser.State {
         this.add.image(0, 0, 'lab');
         // create "items" group to tween simultaneously
         var itemsGroup = game.add.group();
-            var skullPre = itemsGroup.create(310, 50, 'skull');
-            var lungsPre = itemsGroup.create(235, 50, 'lungs');
+            var skullPre = itemsGroup.create(320, 50, 'skull');
+            var lungsPre = itemsGroup.create(245, 50, 'lungs');
             var kidneyPre = itemsGroup.create(165, 50, 'kidney');
             var pelvisPre = itemsGroup.create(75, 40, 'pelvis');
             var heartPre = itemsGroup.create(20, 50, 'heart');
             var brainPre = itemsGroup.create(20, 140, 'brain');
-            // var stomachPre = itemsGroup.create(20, 210, 'stomach');
+            var stomachPre = itemsGroup.create(90, 140, 'stomach');
+            var screwdriver = itemsGroup.create(165, 185, 'screwdriver');
+            var paint = itemsGroup.create(245, 150, 'paint');
 
         // other lab things
         var labShelf = this.add.image(-500, 10, 'shelf');
-        var monsterIn = this.add.image(736, 35, 'monster');
+        var monsterIn = this.add.image(936, 57, 'monster');
+
+        // controls
+        var muteBtn = this.add.image(565, 5, 'mute');
+        var helpBtn = this.add.image(604, 5, 'help');
 
         // var skullY = game.add.sprite(300, 50, 'skull');
         // var lungz = game.add.sprite(230, 50, 'lungs');
@@ -36,7 +42,7 @@ class PrePlay extends Phaser.State {
         itemsGroup.alpha = 0;
 
         shelfTween.start(shelfTween.to({x:0, y:10}, 1600, Phaser.Easing.Elastic.InOut, true, 0));
-        monsterTween.start(monsterTween.to({x:536, y:30}, 1500, Phaser.Easing.Elastic.InOut, true, 0));
+        monsterTween.start(monsterTween.to({x:536, y:57}, 1500, Phaser.Easing.Elastic.InOut, true, 0));
         monsterTween.onComplete.add(drInstruction, this);
 
     // item counter
@@ -68,6 +74,7 @@ class PrePlay extends Phaser.State {
 
       // fade in dr
           var drIn = game.add.image(game.width-230, game.height-275, 'drClue');
+          drIn.scale.setTo(0.5, 0.5);
           drIn.alpha = 0;
           var drTween = game.add.tween(drIn);
           drTween.start(drTween.to({alpha:1}, 500, Phaser.Easing.Linear.In, true, 0));

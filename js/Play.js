@@ -98,7 +98,7 @@ function popQuestion(){
       skull.events.onInputDown.add(onInputDown, this);
       skull.events.onDragStop.add(onDragStop, this);
       // skull.events.pointerOver.add(pointerOver, this);
-    var lungs = game.add.sprite(235, 50, 'lungs');
+    var lungs = game.add.sprite(245, 50, 'lungs');
       lungs.inputEnabled = true;
       lungs.input.useHandCursor = true;
       lungs.input.enableDrag(true, true, true, 0, {width:60, height: 60});
@@ -122,21 +122,41 @@ function popQuestion(){
       brain.input.enableDrag(true, true, true, 0, {width: 60, height: 60});
       brain.events.onInputDown.add(onInputDown, this);
       brain.events.onDragStop.add(onDragStop, this);
-    // var stomach = game.add.sprite(20, 140, 'brain');
-    //   stomach.inputEnabled = true;
-    //   stomach.input.enableDrag(true, false, true, 255, {width: 60, height: 60});
-    //   stomach.events.onInputDown.add(onInputDown, this);
-    //   stomach.events.onDragStop.add(onDragStop, this);
+    var stomach = game.add.sprite(90, 140, 'stomach');
+      stomach.inputEnabled = true;
+      stomach.input.enableDrag(true, false, true, 255, {width: 60, height: 60});
+      stomach.events.onInputDown.add(onInputDown, this);
+      stomach.events.onDragStop.add(onDragStop, this);
     var heart = game.add.sprite(20, 50, 'heart');
       heart.inputEnabled = true;
       heart.input.useHandCursor = true;
       heart.input.enableDrag(true, true, true, 0, {width: 60, height: 60});
       heart.events.onInputDown.add(onInputDown, this);
       heart.events.onDragStop.add(onDragStop, this);
+    var screwdriver = game.add.sprite(165, 185, 'screwdriver');
+      screwdriver.inputEnabled = true;
+      screwdriver.input.useHandCursor = true;
+      screwdriver.input.enableDrag(true, true, true, 0, {width: 60, height: 60});
+      screwdriver.events.onInputDown.add(onInputDown, this);
+      screwdriver.events.onDragStop.add(onDragStop, this);
+    var paint = game.add.sprite(245, 150, 'paint');
+      paint.inputEnabled = true;
+      paint.input.useHandCursor = true;
+      paint.input.enableDrag(true, true, true, 0, {width: 60, height: 60});
+      paint.events.onInputDown.add(onInputDown, this);
+      paint.events.onDragStop.add(onDragStop, this);
+
+
+
+
+
 
     var labShelf = this.add.image(0, 10, 'shelf');
 
-    var monster = this.add.image(536, 35, 'monster');
+    var monster = this.add.image(536, 57, 'monster');
+    var muteBtn = this.add.image(565, 5, 'mute');
+    var helpBtn = this.add.image(604, 5, 'help');
+
 
 // // enableDrag parameters = (lockCenter, bringToTop, pixelPerfect, alphaThreshold, boundsRect, boundsSprite)
 
@@ -148,6 +168,7 @@ function popQuestion(){
 
 
     var drLegbone = game.add.sprite(game.width-230, game.height-275, 'drClue');
+    drLegbone.scale.setTo(0.5, 0.5);
 
     function returnToOrigin(spriteSelected, originX, originY) {
         console.log('returnToOrigin is running');
@@ -189,11 +210,11 @@ function popQuestion(){
                 if (pointer.x >= 420 && pointer.x <= 530 && pointer.y >= 165 ) {
                   evalItem(sprite, pointer);
                   console.log('onDragStop sprite= ' + sprite.key);
+
                   // game.world.remove(drLegbone); // hacky solution to swap out the dr sprite
                   // reloaded in the evalItem function
                 } else {
-                  console.log('return to origin');
-                  // console.log(originX, originY);
+                  console.log(originX, originY);
                   returnToOrigin(spriteSelected, originX, originY);
 
                   // console.log(spriteSelected.position.x, spriteSelected.position.y);
@@ -299,7 +320,7 @@ function popQuestion(){
                 game.world.remove(sprite);
                 successAlert();
                 }  else { //run the second hint
-
+                returnToOrigin(spriteSelected);
                 console.log(queryKey);
                 var msgGroup = game.add.group();
                 let drMsg = msgGroup.create(game.width/6, game.height/6, 'speechBubble');
