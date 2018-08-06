@@ -17,8 +17,9 @@ class Preloader extends Phaser.State {
     this.load.image('monster', 'assets/monster.png');
     this.load.image('lungs', 'assets/sprites/lungs.png');
     this.load.image('skull', 'assets/sprites/skull.png');
-    this.load.image('dr', 'assets/sprites/doctorHint.png');
+    this.load.image('drWaiting', 'assets/sprites/doctorHint.png');
     this.load.image('drClue', 'assets/sprites/dr-clue.png');
+    this.load.image('goodJobDr', 'assets/sprites/goodJobDr.png');
     this.load.image('letsGetStarted', 'assets/lets-get-started.png');
     this.load.image('speechBubble', 'assets/speech-bubble.png');
 

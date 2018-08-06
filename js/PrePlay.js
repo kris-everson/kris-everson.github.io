@@ -22,8 +22,8 @@ class PrePlay extends Phaser.State {
             // var stomachPre = itemsGroup.create(20, 210, 'stomach');
 
         // other lab things
-        var labShelf = this.add.image(-400, 10, 'shelf');
-        var monsterIn = this.add.image(1000, 30, 'monster');
+        var labShelf = this.add.image(-500, 10, 'shelf');
+        var monsterIn = this.add.image(736, 35, 'monster');
 
         // var skullY = game.add.sprite(300, 50, 'skull');
         // var lungz = game.add.sprite(230, 50, 'lungs');
@@ -35,18 +35,21 @@ class PrePlay extends Phaser.State {
 
         itemsGroup.alpha = 0;
 
-        shelfTween.start(shelfTween.to({x:0, y:10}, 800, Phaser.Easing.Elastic.InOut, true, 0));
-        monsterTween.start(monsterTween.to({x:536, y:30}, 850, Phaser.Easing.Elastic.InOut, true, 0));
+        shelfTween.start(shelfTween.to({x:0, y:10}, 1600, Phaser.Easing.Elastic.InOut, true, 0));
+        monsterTween.start(monsterTween.to({x:536, y:30}, 1500, Phaser.Easing.Elastic.InOut, true, 0));
         monsterTween.onComplete.add(drInstruction, this);
 
     // item counter
-        this.add.text(566, 300, itemsNeeded);
-        var itText = this.add.text(536, 330, 'items needed', {font: '10pt Arial', boundsAlignH: 'left', boundsAlignV: 'top', wordWrap: true, wordWrapWidth: 350});
+        // this.add.text(566, 300, itemsNeeded);
+        // var itText = this.add.text(536, 330, 'items needed', {font: '10pt Arial', boundsAlignH: 'left', boundsAlignV: 'top', wordWrap: true, wordWrapWidth: 350});
         itemsTween.start(itemsTween.to({ alpha: 1 }, 1500, "Linear", true));
 
       }
 
       update() {
+        // var itemsNeeded = 6;
+        // this.add.text(566, 300, itemsNeeded);
+        // var itText = this.add.text(536, 330, 'items needed', textStyle);
 
       }
 }
@@ -67,25 +70,25 @@ class PrePlay extends Phaser.State {
           var drIn = game.add.image(game.width-230, game.height-275, 'drClue');
           drIn.alpha = 0;
           var drTween = game.add.tween(drIn);
-          drTween.start(drTween.to({alpha:1}, 250, Phaser.Easing.Linear.In, true, 0));
+          drTween.start(drTween.to({alpha:1}, 500, Phaser.Easing.Linear.In, true, 0));
 
 
       function getStarted() {
         // game.add.tween(introMSG.position).to( {x: game.width, y: game.height}, 900, Phaser.Easing.Linear.None, true, 0);
         game.world.remove(startedBtn);
-        var tween = game.add.tween(introMSG.scale).to( {x:650, y:450}, 900, Phaser.Easing.Elastic.Out, true);
-
+        var tween = game.add.tween(introMSG.scale).to( {x:650, y:450}, 900, Phaser.Easing.Linear.In, true, 0);
+        game.state.start('Play');
 
 
         // add an event listener here, once the tween has finished, run the Play stage
-        tween.onComplete.add(playStart, this);
+        // tween.onComplete.add(playStart, this);
         // game.state.start('Play');
 
       }
 
-      function playStart() {
-        game.state.start('Play');
-      }
+      // function playStart() {
+      //   game.state.start('Play');
+      // }
 
 
     }
