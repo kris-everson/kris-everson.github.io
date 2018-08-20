@@ -4,32 +4,48 @@ class PrePlay extends Phaser.State {
       preload() {
         // this.load.image('shelf', 'assets/shelf.png');
 
-
       }
 
       create() {
 
-        var itemsNeeded = 6;
         this.add.image(0, 0, 'lab');
         // create "items" group to tween simultaneously
         var itemsGroup = game.add.group();
-            var skullPre = itemsGroup.create(320, 50, 'skull');
-            var lungsPre = itemsGroup.create(245, 50, 'lungs');
-            var kidneyPre = itemsGroup.create(165, 50, 'kidney');
-            var pelvisPre = itemsGroup.create(75, 40, 'pelvis');
-            var heartPre = itemsGroup.create(20, 50, 'heart');
-            var brainPre = itemsGroup.create(20, 140, 'brain');
-            var stomachPre = itemsGroup.create(90, 140, 'stomach');
-            var screwdriver = itemsGroup.create(165, 185, 'screwdriver');
-            var paint = itemsGroup.create(245, 150, 'paint');
+            var heartPre = itemsGroup.create(15, 50, 'heart');
+            var screwdriver = itemsGroup.create(65, 67, 'screwdriver');
+            var stomachPre = itemsGroup.create(158, 65, 'stomach');
+            var tonguePre = itemsGroup.create(240, 180, 'tongue');
+            var teethPre = itemsGroup.create(279, 79, 'teeth');
+            var skullPre = itemsGroup.create(323, 50, 'skull');
+            var paintPre = itemsGroup.create(10, 156, 'paint');
+            var pelvisPre = itemsGroup.create(76, 129, 'pelvis');
+            var brainJarPre = itemsGroup.create(165, 140, 'brainjar');
+            var brainPre = itemsGroup.create(168, 140, 'brain');
+            var kidneyPre = itemsGroup.create(291, 150, 'kidney');
+            var vertebraePre = itemsGroup.create(0, 216, 'vertebrae');
+            var hammerPre = itemsGroup.create(45, 288, 'hammer');
+            var intestinePre = itemsGroup.create(126, 260, 'intestine');
+            var ribsPre = itemsGroup.create(188, 246, 'ribs');
+            var earsPre = itemsGroup.create(278, 296, 'ears');
+            var bonePre = itemsGroup.create(324, 233, 'bone');
+            var esophagusPre = itemsGroup.create(10, 388, 'esophagus');
+            var lungsPre = itemsGroup.create(117, 346, 'lungs');
+            var eyesPre = itemsGroup.create(199, 386, 'eyes');
+            var nosejarPre =itemsGroup.create(264, 349, 'nosejar');
+            var nosePre = itemsGroup.create(278, 369, 'nose');
+
 
         // other lab things
         var labShelf = this.add.image(-500, 10, 'shelf');
         var monsterIn = this.add.image(936, 57, 'monster');
 
         // controls
-        var muteBtn = this.add.image(565, 5, 'mute');
-        var helpBtn = this.add.image(604, 5, 'help');
+
+        var muteBtn = game.add.button(565, 5, 'mute', muteOnClick, this);
+        var helpBtn = game.add.button(604, 5, 'help', helpPopup, this);
+        muteBtn.inputEnabled = true;
+        helpBtn.inputEnabled = true;
+        // this.muteBtn.events.onInputUp.add(function) = ;
 
         // var skullY = game.add.sprite(300, 50, 'skull');
         // var lungz = game.add.sprite(230, 50, 'lungs');
@@ -38,6 +54,7 @@ class PrePlay extends Phaser.State {
         var shelfTween = game.add.tween(labShelf);
         var monsterTween = game.add.tween(monsterIn);
         var itemsTween = game.add.tween(itemsGroup);
+
 
         itemsGroup.alpha = 0;
 
@@ -49,6 +66,22 @@ class PrePlay extends Phaser.State {
         // this.add.text(566, 300, itemsNeeded);
         // var itText = this.add.text(536, 330, 'items needed', {font: '10pt Arial', boundsAlignH: 'left', boundsAlignV: 'top', wordWrap: true, wordWrapWidth: 350});
         itemsTween.start(itemsTween.to({ alpha: 1 }, 1500, "Linear", true));
+        // function muteOnClick(){
+        //   if (game.sound.isPlaying = true) {
+        //     game.sound.mute = true;
+        //   }
+        //   else {
+        //     game.sound.mute = false;
+        //   }
+        //
+        //   // mute the audio
+        // }
+
+// this.soundToggle = this.game.add.button(this.game.world.width - 150, 15, 'button', this.toggleSound, this);
+// this.soundToggle.frame = 1;
+
+        function helpPopup(){}
+
 
       }
 
@@ -74,7 +107,7 @@ class PrePlay extends Phaser.State {
 
       // fade in dr
           var drIn = game.add.image(game.width-230, game.height-275, 'drClue');
-          drIn.scale.setTo(0.5, 0.5);
+          // drIn.scale.setTo(0.5, 0.5);
           drIn.alpha = 0;
           var drTween = game.add.tween(drIn);
           drTween.start(drTween.to({alpha:1}, 500, Phaser.Easing.Linear.In, true, 0));
