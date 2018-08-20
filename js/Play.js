@@ -510,6 +510,7 @@ function popQuestion(){
 
         function updateItemsNumber(){
           // itemsCount.text.setText(itemsNeeded); Update text!
+
           if (itemsNeeded === 0) {
 
             game.state.start('Win');
@@ -521,11 +522,11 @@ function popQuestion(){
           }
         }
 
-        // // var itemsNeeded = 6;
-        // function itemsCount() {text: game.add.text(566, 300, itemsNeeded)};
-        // itemsCount();
-        // var itText = this.add.text(536, 330, 'ITEMS NEEDED', textStyle);
-        // itText.bringToTop();
+        var itemsNeeded = 6;
+        function itemsCount() {text: game.add.text(566, 300, itemsNeeded)};
+        itemsCount();
+        var itText = this.add.text(536, 330, 'ITEMS NEEDED', textStyle);
+        itText.bringToTop();
 
         }
         // end create
@@ -534,11 +535,7 @@ function popQuestion(){
 
 update() {
 
-  var itemsNeeded = 6;
-  function itemsCount() {text: game.add.text(566, 300, itemsNeeded)};
-  itemsCount();
-  var itText = this.add.text(536, 330, 'ITEMS NEEDED', textStyle);
-  itText.bringToTop();
+
 
 
 
