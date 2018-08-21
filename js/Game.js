@@ -9,9 +9,10 @@ var game = new Phaser.Game(650, 450, Phaser.AUTO, 'game-container', window.devic
   game.state.start('Boot');
 
 var textStyle = { font: '11pt Tahoma', boundsAlignH: 'center', boundsAlignV: 'middle', wordWrap: true, wordWrapWidth: 350 };
+var itemsCountStyle = {font: '30pt Arial', boundsAlignH: 'center', fontWeight: 'bold', boundsAlignV: 'middle', wordWrap: true, wordWrapWidth: 100, fill: '#D65200'};
 var muteButton;
 var helpScreen;
-var itemsNeeded = 6;
+// var itemsNeeded = 6;
 
 function muteOnClick(){
   if (!game.sound.mute) {

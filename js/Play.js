@@ -15,6 +15,8 @@ var questionSelected;
 var correct;
 var itemsNeeded = 6;
 
+
+
 ////////////////////////
 
 var lungsQuery = new Object();
@@ -113,15 +115,10 @@ esophagusQuery.hint2 = "Not quite. I need the tube that connects the mouth to th
 esophagusQuery.answer = "That's right!";
 esophagusQuery.keyName = 'esophagus';
 
-var earsQuery = new Object();
-earsQuery.hint = 'Our creation will need to be able to hear us. Give me the organs used to sense sound.';
-earsQuery.hint2 = "Listen closely and try again. Give me the organs used for hearing.";
-earsQuery.answer = "Correct! And your ear has another important job besides helping you hear. Its inner section helps you to keep your balance, too!";
-earsQuery.keyName = 'ears';
 
 
 
-var questions = [lungsQuery, kidneyQuery, skullQuery, brainQuery, pelvisQuery, heartQuery, teethQuery, earQuery, noseQuery, eyesQuery, stomachQuery, intestineQuery, tongueQuery, ribsQuery, esophagusQuery, earsQuery];
+var questions = [lungsQuery, kidneyQuery, skullQuery, brainQuery, pelvisQuery, heartQuery, teethQuery, earQuery, noseQuery, eyesQuery, stomachQuery, intestineQuery, tongueQuery, ribsQuery, esophagusQuery, vertebraeQuery];
 
 questions.sort(function(){return Math.round(Math.random());});
 console.log(questions);
@@ -141,7 +138,6 @@ function popQuestion(){
 
 ////////////////////
 
-    var textStyle = { font: '10pt Tahoma', boundsAlignH: 'left', boundsAlignV: 'center', wordWrap: true, wordWrapWidth: 300 };
 // splices the question out
 
     // console.log(newQuestion);
@@ -289,6 +285,19 @@ function popQuestion(){
     var dragToLegboneText = this.add.image(480, 75, 'drag-text');
       dragToLegboneText.anchor.setTo(0.5, 0.5);
 
+    var itemsCounterText = this.add.text(596, 370, itemsNeeded, itemsCountStyle);
+    itemsCounterText.anchor.set(0.5, 0.5);
+    itemsCounterText.stroke = '#F9F099';
+    itemsCounterText.strokeThickness = '16';
+
+    var itPng = this.add.image(600, 400, 'items-needed');
+    itPng.anchor.set(0.5, 0.5);
+    itemsCounterText.bringToTop();
+          function itemsCount() {
+            // text: game.add.text(566, 300, itemsNeeded)
+            itemsCounterText.setText(itemsNeeded);
+          };
+
 
       var drLegbone = game.add.sprite(game.width-230, game.height-275, 'drClue');
       drLegbone.inputEnabled = true;
@@ -360,7 +369,11 @@ function popQuestion(){
 
             var msgGroup = game.add.group();
             var bubbleBG = msgGroup.create(game.width/2, game.height/2-60, 'speechBubble');
-            var hintText = game.add.text(game.width/2,game.height/2-95, questionSelected.hint, textStyle, msgGroup);
+            var hintText = game.add.bitmapText(game.width/2,game.height/2-95, 'avenir', questionSelected.hint, 16);
+            msgGroup.add(hintText);
+            hintText.maxWidth = 350;
+            // var hintText = game.add.bitmapText(game.width/2,game.height/2-95, questionSelected.hint, textStyle, msgGroup);
+
             hintText.anchor.setTo(0.5, 0.5);
             bubbleBG.anchor.setTo(0.5, 0.5);
             var contBtn = game.add.button(game.width/2, 190, 'continueButton', minHint, msgGroup);
@@ -403,6 +416,11 @@ function popQuestion(){
           var msgGroup = game.add.group();
           var bubbleBG = msgGroup.create(game.width/6, game.height/6, 'speechBubble');
           var hintText = game.add.text(140,90, questionSelected.hint, textStyle, msgGroup);
+          // hintText = game.add.bitmapText(game.width/2,game.height/2-95, 'avenir', questionSelected.hint, 16);
+          // msgGroup.add(hintText);
+
+
+
           var contBtn = game.add.button(220, 160, 'continueButton', startPlay, msgGroup);
           drLegbone.bringToTop();
           function startPlay() {
@@ -413,7 +431,7 @@ function popQuestion(){
       }
 
         function successAlert(sprite, pointer) {
-          correct = game.add.audio('correct');
+          correct = game.add.audio('ding');
           correct.play();
           drLegbone.loadTexture('goodJobDr');
           messageGroup = game.add.group();
@@ -494,9 +512,7 @@ function popQuestion(){
                 function tryAgain(){
 
 
-                    // var tweenOut =
-
-                    game.add.tween(msgGroup.scale).to({x:300, y:300}, 600, Phaser.Easing.Elastic.Out, true);
+                    game.add.tween(msgGroup.position).to({x:900, y:900}, 600, Phaser.Easing.Elastic.Out, true);
                     game.add.tween(contBtn.position).to({x:900, y: 160}, 900, Phaser.Easing.Elastic.Out, true);
 
 
@@ -511,22 +527,23 @@ function popQuestion(){
         function updateItemsNumber(){
           // itemsCount.text.setText(itemsNeeded); Update text!
 
-          if (itemsNeeded === 0) {
+          if (itemsNeeded === 1) {
+
+            // game.add.tween(msgGroup.scale).to({x:300, y:300}, 600, Phaser.Easing.Elastic.Out, true);
+            // game.add.tween(contBtn.position).to({x:900, y: 160}, 900, Phaser.Easing.Elastic.Out, true);
+            //
 
             game.state.start('Win');
             console.log(itemsNeeded);
           } else {
             itemsNeeded--;
             console.log(itemsNeeded);
-            return itemsNeeded;
+            itemsCount();
+            // return itemsNeeded;
           }
         }
 
-        var itemsNeeded = 6;
-        function itemsCount() {text: game.add.text(566, 300, itemsNeeded)};
-        itemsCount();
-        var itText = this.add.text(536, 330, 'ITEMS NEEDED', textStyle);
-        itText.bringToTop();
+
 
         }
         // end create

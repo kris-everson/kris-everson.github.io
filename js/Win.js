@@ -5,6 +5,8 @@ class Win extends Phaser.State {
   }
 
   create() {
+    this.add.image(0, 0, 'lab');
+    
     game.add.text(game.width/4, game.height/2, "The creation is complete!", {font: "15px Arial", fill: "#ffffff", align: "center"});
     var button = game.add.button(340, 320, 'button', actionOnClick, this);
 

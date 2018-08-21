@@ -3,7 +3,7 @@ class Preloader extends Phaser.State {
   preload() {
     var loadingLabel = game.add.text(game.width/2, game.height/2, 'Loading...', {font: '24px Tahoma', fill: 'white'});
     loadingLabel.anchor.setTo(0.5);
-    game.load.bitmapFont('avenir','assets/fonts/avenirLegbone.png', 'assets/fonts/avenirLegbone.xml');
+    game.load.bitmapFont('avenir','assets/fonts/avenir.png', 'assets/fonts/avenir.xml');
     game.load.audio('powersaw', ['assets/audio/powersaw.mp3']);
     game.load.audio('correct', ['assets/audio/correct.mp3']);
     this.load.image('loadScreen', 'assets/startScreen/start.jpg');
@@ -50,10 +50,12 @@ class Preloader extends Phaser.State {
     this.load.image('drag-to', 'assets/sprites/drag-to-arrow.png');
     this.load.image('drag-text', 'assets/drag-text.png');
     this.load.image('help-screen', 'assets/help-screen.png');
+    this.load.image('items-needed', 'assets/buttons/items_needed.png');
     game.load.spritesheet('blood', 'assets/sprites/anims/dr-anim.png', 156, 349, 40);
     game.load.audio('sawSound', ['assets/audio/powersaw.mp3']);
     game.load.audio('swishFX', ['assets/audio/swish.mp3']);
     game.load.audio('wrong', ['assets/audio/wrong.mp3']);
+    game.load.audio('ding', ['assets/audio/ding.mp3']);
 
 
   }
