@@ -211,6 +211,16 @@
             <key type="filename">blood 28.png</key>
             <key type="filename">blood 29.png</key>
             <key type="filename">blood 30.png</key>
+            <key type="filename">blood 31.png</key>
+            <key type="filename">blood 32.png</key>
+            <key type="filename">blood 33.png</key>
+            <key type="filename">blood 34.png</key>
+            <key type="filename">blood 35.png</key>
+            <key type="filename">blood 36.png</key>
+            <key type="filename">blood 37.png</key>
+            <key type="filename">blood 38.png</key>
+            <key type="filename">blood 39.png</key>
+            <key type="filename">blood 40.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -256,6 +266,16 @@
             <filename>blood 30.png</filename>
             <filename>blood 29.png</filename>
             <filename>blood 28.png</filename>
+            <filename>blood 31.png</filename>
+            <filename>blood 32.png</filename>
+            <filename>blood 33.png</filename>
+            <filename>blood 34.png</filename>
+            <filename>blood 35.png</filename>
+            <filename>blood 36.png</filename>
+            <filename>blood 37.png</filename>
+            <filename>blood 38.png</filename>
+            <filename>blood 39.png</filename>
+            <filename>blood 40.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

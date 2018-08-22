@@ -1,9 +1,9 @@
 class Preloader extends Phaser.State {
 
   preload() {
-    game.load.bitmapFont('avenir','assets/fonts/avenir.png', 'assets/fonts/avenir.xml');
-    var loadingLabel = game.add.bitmapFont(game.width/2, game.height/2, 'avenir','LOADING...', 24);
+    var loadingLabel = game.add.text(game.width/2, game.height/2, 'Loading...', {font: '24px Tahoma', fill: 'white'});
     loadingLabel.anchor.setTo(0.5);
+    game.load.bitmapFont('avenir','assets/fonts/avenir.png', 'assets/fonts/avenir.xml');
     game.load.audio('powersaw', ['assets/audio/powersaw.mp3']);
     game.load.audio('correct', ['assets/audio/correct.mp3']);
     this.load.image('loadScreen', 'assets/startScreen/start.jpg');
