@@ -45,11 +45,7 @@ class PrePlay extends Phaser.State {
         var helpBtn = game.add.button(604, 5, 'help', helpPopup, this);
         muteBtn.inputEnabled = true;
         helpBtn.inputEnabled = true;
-        // this.muteBtn.events.onInputUp.add(function) = ;
-
-        // var skullY = game.add.sprite(300, 50, 'skull');
-        // var lungz = game.add.sprite(230, 50, 'lungs');
-
+        
         // tweens
         var shelfTween = game.add.tween(labShelf);
         var monsterTween = game.add.tween(monsterIn);
@@ -61,35 +57,9 @@ class PrePlay extends Phaser.State {
         shelfTween.start(shelfTween.to({x:0, y:10}, 1600, Phaser.Easing.Elastic.InOut, true, 0));
         monsterTween.start(monsterTween.to({x:536, y:57}, 1500, Phaser.Easing.Elastic.InOut, true, 0));
         monsterTween.onComplete.add(drInstruction, this);
-
-    // item counter
-        // this.add.text(566, 300, itemsNeeded);
-        // var itText = this.add.text(536, 330, 'items needed', {font: '10pt Arial', boundsAlignH: 'left', boundsAlignV: 'top', wordWrap: true, wordWrapWidth: 350});
         itemsTween.start(itemsTween.to({ alpha: 1 }, 1500, "Linear", true));
-        // function muteOnClick(){
-        //   if (game.sound.isPlaying = true) {
-        //     game.sound.mute = true;
-        //   }
-        //   else {
-        //     game.sound.mute = false;
-        //   }
-        //
-        //   // mute the audio
-        // }
-
-// this.soundToggle = this.game.add.button(this.game.world.width - 150, 15, 'button', this.toggleSound, this);
-// this.soundToggle.frame = 1;
-
-        function helpPopup(){}
-
-
-      }
 
       update() {
-        // var itemsNeeded = 6;
-        // this.add.text(566, 300, itemsNeeded);
-        // var itText = this.add.text(536, 330, 'items needed', textStyle);
-
       }
 }
 
@@ -97,14 +67,10 @@ class PrePlay extends Phaser.State {
     function drInstruction() {
 
       var introMSG = game.add.group();
-      // var msgTween = game.add.tween(introMSG);
-      // introMSG.start(introMSG.to({alpha:1}));
 
       msgBG = introMSG.create(game.width/6, game.height/6, 'speechBubble');
       welcome = game.add.text(140, 90, "Welcome to my lab! You'll be helping me assemble my newest creation. Hand me the items when I ask for them.", textStyle, introMSG);
       startedBtn = game.add.button(220, 160, 'letsGetStarted', getStarted, introMSG);
-      // var drLegbone = game.add.image(game.width-230, game.height-275, 'drClue');
-
       // fade in dr
           var drIn = game.add.image(game.width-230, game.height-275, 'drClue');
           // drIn.scale.setTo(0.5, 0.5);
@@ -120,15 +86,6 @@ class PrePlay extends Phaser.State {
         game.state.start('Play');
 
 
-        // add an event listener here, once the tween has finished, run the Play stage
-        // tween.onComplete.add(playStart, this);
-        // game.state.start('Play');
-
       }
-
-      // function playStart() {
-      //   game.state.start('Play');
-      // }
-
 
     }
