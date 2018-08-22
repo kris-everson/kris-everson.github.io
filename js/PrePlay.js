@@ -66,44 +66,24 @@ class PrePlay extends Phaser.State {
         // this.add.text(566, 300, itemsNeeded);
         // var itText = this.add.text(536, 330, 'items needed', {font: '10pt Arial', boundsAlignH: 'left', boundsAlignV: 'top', wordWrap: true, wordWrapWidth: 350});
         itemsTween.start(itemsTween.to({ alpha: 1 }, 1500, "Linear", true));
+        // function muteOnClick(){
+        //   if (game.sound.isPlaying = true) {
+        //     game.sound.mute = true;
+        //   }
+        //   else {
+        //     game.sound.mute = false;
+        //   }
+        //
+        //   // mute the audio
+        // }
+
+// this.soundToggle = this.game.add.button(this.game.world.width - 150, 15, 'button', this.toggleSound, this);
+// this.soundToggle.frame = 1;
+
+        function helpPopup(){}
 
 
-        function drInstruction() {
-
-          var introMSG = game.add.group();
-          // var msgTween = game.add.tween(introMSG);
-          // introMSG.start(introMSG.to({alpha:1}));
-
-          msgBG = introMSG.create(game.width/6, game.height/6, 'speechBubble');
-          welcome = game.add.text(140, 90, "Welcome to my lab! You'll be helping me assemble my newest creation. Hand me the items when I ask for them.", textStyle, introMSG);
-          startedBtn = game.add.button(220, 160, 'letsGetStarted', getStarted, introMSG);
-          // var drLegbone = game.add.image(game.width-230, game.height-275, 'drClue');
-
-          // fade in dr
-              var drIn = game.add.image(game.width-230, game.height-275, 'drClue');
-              // drIn.scale.setTo(0.5, 0.5);
-              drIn.alpha = 0;
-              var drTween = game.add.tween(drIn);
-              drTween.start(drTween.to({alpha:1}, 500, Phaser.Easing.Linear.In, true, 0));
-
-
-          function getStarted() {
-            // game.add.tween(introMSG.position).to( {x: game.width, y: game.height}, 900, Phaser.Easing.Linear.None, true, 0);
-            game.world.remove(startedBtn);
-            var tween = game.add.tween(introMSG.scale).to( {x:650, y:450}, 900, Phaser.Easing.Linear.In, true, 0);
-            game.state.start('Play');
-
-
-            // add an event listener here, once the tween has finished, run the Play stage
-            // tween.onComplete.add(playStart, this);
-            // game.state.start('Play');
-
-          }
-
-
-
-
-}
+      }
 
       update() {
         // var itemsNeeded = 6;
@@ -111,3 +91,44 @@ class PrePlay extends Phaser.State {
         // var itText = this.add.text(536, 330, 'items needed', textStyle);
 
       }
+}
+
+
+    function drInstruction() {
+
+      var introMSG = game.add.group();
+      // var msgTween = game.add.tween(introMSG);
+      // introMSG.start(introMSG.to({alpha:1}));
+
+      msgBG = introMSG.create(game.width/6, game.height/6, 'speechBubble');
+      welcome = game.add.text(140, 90, "Welcome to my lab! You'll be helping me assemble my newest creation. Hand me the items when I ask for them.", textStyle, introMSG);
+      startedBtn = game.add.button(220, 160, 'letsGetStarted', getStarted, introMSG);
+      // var drLegbone = game.add.image(game.width-230, game.height-275, 'drClue');
+
+      // fade in dr
+          var drIn = game.add.image(game.width-230, game.height-275, 'drClue');
+          // drIn.scale.setTo(0.5, 0.5);
+          drIn.alpha = 0;
+          var drTween = game.add.tween(drIn);
+          drTween.start(drTween.to({alpha:1}, 500, Phaser.Easing.Linear.In, true, 0));
+
+
+      function getStarted() {
+        // game.add.tween(introMSG.position).to( {x: game.width, y: game.height}, 900, Phaser.Easing.Linear.None, true, 0);
+        game.world.remove(startedBtn);
+        var tween = game.add.tween(introMSG.scale).to( {x:650, y:450}, 900, Phaser.Easing.Linear.In, true, 0);
+        game.state.start('Play');
+
+
+        // add an event listener here, once the tween has finished, run the Play stage
+        // tween.onComplete.add(playStart, this);
+        // game.state.start('Play');
+
+      }
+
+      // function playStart() {
+      //   game.state.start('Play');
+      // }
+
+
+    }
