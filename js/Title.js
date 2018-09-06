@@ -6,7 +6,7 @@ class Title extends Phaser.State {
 
   preload() {
         game.load.atlas('button', 'assets/buttons/button_texture_atlas.png', 'assets/buttons/button_texture_atlas.json');
-        // game.load.atlas('muteBtn', 'assets/buttons/mute.json');
+        game.load.atlas('mute', 'assets/buttons/mute.json', 'assets/buttons/mute.json');
         game.load.audio('laugh', ['assets/audio/dr-laugh.mp3', 'assets/audio/dr-laugh.ogg']);
         game.load.audio('bubbling', ['assets/audio/lab-noises.mp3']);
 
@@ -17,7 +17,6 @@ class Title extends Phaser.State {
 
     bubbling = game.add.audio('bubbling');
     bubbling.loopFull(0.6);
-    // bubbling.onLoop.add(hasLooped, this);
 
 
 

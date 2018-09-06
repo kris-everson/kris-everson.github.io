@@ -27,7 +27,7 @@ class PrePlay extends Phaser.State {
             var intestinePre = itemsGroup.create(126, 260, 'intestine');
             var ribsPre = itemsGroup.create(188, 246, 'ribs');
             var earsPre = itemsGroup.create(278, 296, 'ears');
-            var bonePre = itemsGroup.create(324, 233, 'bone');
+            var femurPre = itemsGroup.create(324, 233, 'femur');
             var esophagusPre = itemsGroup.create(10, 388, 'esophagus');
             var lungsPre = itemsGroup.create(117, 346, 'lungs');
             var eyesPre = itemsGroup.create(199, 386, 'eyes');
@@ -66,19 +66,7 @@ class PrePlay extends Phaser.State {
         // this.add.text(566, 300, itemsNeeded);
         // var itText = this.add.text(536, 330, 'items needed', {font: '10pt Arial', boundsAlignH: 'left', boundsAlignV: 'top', wordWrap: true, wordWrapWidth: 350});
         itemsTween.start(itemsTween.to({ alpha: 1 }, 1500, "Linear", true));
-        // function muteOnClick(){
-        //   if (game.sound.isPlaying = true) {
-        //     game.sound.mute = true;
-        //   }
-        //   else {
-        //     game.sound.mute = false;
-        //   }
-        //
-        //   // mute the audio
-        // }
 
-// this.soundToggle = this.game.add.button(this.game.world.width - 150, 15, 'button', this.toggleSound, this);
-// this.soundToggle.frame = 1;
 
         function helpPopup(){}
 
@@ -86,9 +74,6 @@ class PrePlay extends Phaser.State {
       }
 
       update() {
-        // var itemsNeeded = 6;
-        // this.add.text(566, 300, itemsNeeded);
-        // var itText = this.add.text(536, 330, 'items needed', textStyle);
 
       }
 }
@@ -101,7 +86,10 @@ class PrePlay extends Phaser.State {
       // introMSG.start(introMSG.to({alpha:1}));
 
       msgBG = introMSG.create(game.width/6, game.height/6, 'speechBubble');
-      welcome = game.add.text(140, 90, "Welcome to my lab! You'll be helping me assemble my newest creation. Hand me the items when I ask for them.", textStyle, introMSG);
+      // welcome = game.add.text(140, 90, "Welcome to my lab! You'll be helping me assemble my newest creation. Hand me the items when I ask for them.", textStyle, introMSG);
+      welcome = game.add.bitmapText(game.width/2,game.height/2-95, 'avenir', "Welcome to my lab! You'll be helping me assemble my newest creation. Hand me the items when I ask for them.", 15);
+      welcome.anchor.setTo(0.5, 0.5);
+      welcome.maxWidth = 350;
       startedBtn = game.add.button(220, 160, 'letsGetStarted', getStarted, introMSG);
       // var drLegbone = game.add.image(game.width-230, game.height-275, 'drClue');
 

@@ -1,0 +1,72 @@
+// function Item(hint1, hint2, answer, keyName) {
+//   this.hint = hint1;
+//   this.hint2 = hint2;
+//   this.answer = answer;
+//   this.keyName = keyName;
+// }
+
+// var lungsQuery = new Item('Quick! The creature needs a way to get some oxygen into his body.', 'Sorry. Take a deep breath and try again!', "Correct! The lungs are the major organ of the respiratory system. They work with the heart to bring fresh oxygen into the body and push out waste carbon dioxide.", 'lungs');
+
+// var lungsQuery = new Object();
+// lungsQuery.hint = 'Quick! The creature needs a way to get some oxygen into his body.';
+// lungsQuery.hint2 = 'Sorry. Take a deep breath and try again!';
+// lungsQuery.answer = "Correct! The lungs are the major organ of the respiratory system. They work with the heart to bring fresh oxygen into the body and push out waste carbon dioxide.";
+// lungsQuery.keyName = 'lungs';
+//
+// var kidneyQuery =  new Object();
+// kidneyQuery.hint = "Help me find the pair of organs that filter waste from the blood.";
+// kidneyQuery.hint2 = "I'll give you a hint: they're shaped like a pair of large beans.";
+// kidneyQuery.answer = "Good job! Did you know that your kidneys filter around 200 quarts (200 L) of blood?";
+// kidneyQuery.keyName = 'kidney';
+//
+// var skullQuery = new Object();
+// skullQuery.hint = 'Our creature requires a cranium. Quickly!';
+// skullQuery.hint2 = 'Everyone should have a good head on their shoulders. This creature is no exception.';
+// skullQuery.answer = 'Correct! Our creature needs a strong skull to protext its brain and sense organs. (And "cranium" is another word for "skull").'
+// skullQuery.keyName = 'skull';
+//
+// var brainQuery = new Object();
+// brainQuery.hint = 'Brains! I need brains!';
+// brainQuery.hint2 = 'Oops! I think my assistant needs some brains as well. Try again.';
+// brainQuery.answer = "Yes! Now that's using your head. The brain controls movement, writing, reading, speech, and memory.";
+// brainQuery.keyName = 'brain';
+//
+// var pelvisQuery =  new Object();
+// pelvisQuery.hint = "Find me a bony structure to connect the creature's legs to the base of the spine";
+// pelvisQuery.hint2 = 'No, I need a ring of bones to give this creature some hips.';
+// pelvisQuery.answer = "That's right!";
+// pelvisQuery.keyName = 'pelvis';
+//
+// var heartQuery = new Object();
+// heartQuery.hint = 'Get the blood pumping.';
+// heartQuery.hint2 = 'no, try again';
+// heartQuery.answer = 'cool! add the heart to the creature.';
+// heartQuery.keyName = 'heart';
+//
+// // var stomachQuery = new Object();
+// // stomachQuery.hint = 'We need to give our creation a way to digest his food.';
+// // stomachQuery.hint2 = "That's not it. I'm looking for the main organ of the digestive tract.";
+// // stomachQuery.answer = "That's right.""
+// // stomachQuery.keyName = 'stomach';
+// var originX;
+// var originY;
+//
+// var questions = [lungsQuery, kidneyQuery, skullQuery, brainQuery, pelvisQuery, heartQuery];
+// var randomIndex = questions[Math.floor(Math.random()*questions.length)];
+// console.log('randomIndex ' + randomIndex);
+// // popQuestion();
+// console.log('questions after splicing: ' + questions);
+//
+//
+// function popQuestion(){
+//   // splice out
+//   var questionSelected = questions.splice(randomIndex, 1);
+//   randomIndex = questions[Math.floor(Math.random()*questions.length)];
+//   console.log('questions= ' + questions);
+//   // randomIndex = questions[Math.floor(Math.random()*questions.length)];
+//   // this selects a random object from the array
+//   console.log(randomIndex.hint);
+//   console.log("initial: " + randomIndex);
+//   return randomIndex.hint;
+//
+// }
