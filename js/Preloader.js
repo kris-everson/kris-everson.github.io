@@ -60,13 +60,17 @@ class Preloader extends Phaser.State {
     this.load.image('drag-text', 'assets/drag-text.png');
     this.load.image('help-screen', 'assets/help-screen.png');
     this.load.image('items-needed', 'assets/buttons/items_needed.png');
+    this.load.image('itsAlive', 'assets/sprites/itsAlive.png');
+    this.load.image('monsterAlive', 'assets/sprites/monster-alive.png');
     game.load.spritesheet('blood', 'assets/sprites/anims/dr-anim.png', 156, 349, 40);
+    // game.load.spritesheet('monsterAlive', 'assets/sprites/anims/monsterAlive.png');
+    // game.load.atlasJSONHash('monsterAlive', 'assets/sprites/anims/monsterAlive.png', 'assets/sprites/anims/monsterAlive.json');
     game.load.audio('sawSound', ['assets/audio/powersaw.mp3']);
     game.load.audio('swishFX', ['assets/audio/swish.mp3']);
     game.load.audio('wrong', ['assets/audio/wrong.mp3']);
     game.load.audio('ding', ['assets/audio/ding.mp3']);
     game.load.audio('thunder', ['assets/audio/thunder.mp3']);
-
+    game.load.audio('monsterGroan', ['assets/audio/monster-noize.mp3']);
   }
 
   create() {

@@ -1,29 +1,24 @@
 class Play extends Phaser.State {
 
 preload() {
-
 }
+
 create() {
 
 var spriteSelected;
 var bubble;
+var hintText;
 var continuebutton;
 var originX;
 var originY;
 var questionSelected;
 var correct;
 var itemsNeeded = 6;
-var drGroup = game.add.group();
-var labGroup;
-labGroup = game.add.group();
+// messageGroup.add(bubble);
+// var msgAndDoctorGroup = game.add.group();
+// var labGroup = game.add.group();
 var messageGroup = game.add.group();
-game.world.bringToTop(messageGroup);
 var contBtn;
-
-// drGroup.add(messageGroup);
-// game.world.bringToTop(drGroup);
-
-// labGroup.add(messageGroup);
 
 
 
@@ -42,8 +37,8 @@ kidneyQuery.answer = "Good job! Did you know that your kidneys filter around 200
 kidneyQuery.keyName = 'kidney';
 
 var vertebraeQuery =  new Object();
-vertebraeQuery.hint = "Someone is looking slouchy! Hand me a piece of the skeletal system.";
-vertebraeQuery.hint2 = "Since when is THAT part of the skeletal system, silly? Keep looking!";
+vertebraeQuery.hint = "Someone is looking slouchy! Hand me a piece of the skeletal system with some support.";
+vertebraeQuery.hint2 = "Oof, that doesn't seem right. Keep looking!";
 vertebraeQuery.answer = "That's right! The vertebral column is part of the skeletal system. The system has 206 bones in all!";
 vertebraeQuery.keyName = 'vertebrae';
 
@@ -136,10 +131,6 @@ var questions = [lungsQuery, kidneyQuery, skullQuery, brainQuery, pelvisQuery, h
 questions.sort(function(){return Math.round(Math.random());});
 // randomly sort array of questions
 console.log('questions array randomly sorted: ' + questions);
-
-// original method
-// var randomIndex = questions[Math.floor(Math.random()*questions.length)];
-
 popQuestion();
 
 function popQuestion(){
@@ -152,6 +143,8 @@ function popQuestion(){
 
   var labBG = this.add.image(0, 0, 'lab');
   labBG.sendToBack();
+  var labShelf = this.add.image(0, 10, 'shelf');
+  // labGroup.add(labShelf);
   // labGroup.add(labBG);
     // create "items" group to tween simultaneously
     var heart = game.add.sprite(15, 50, 'heart');
@@ -160,35 +153,35 @@ function popQuestion(){
       heart.input.enableDrag(true, true, true, 0, {width: 60, height: 60});
       heart.events.onInputDown.add(onInputDown, this);
       heart.events.onDragStop.add(onDragStop, this);
-      labGroup.add(heart);
+      // labGroup.add(heart);
     var screwdriver = game.add.sprite(65, 67, 'screwdriver');
       screwdriver.inputEnabled = true;
       screwdriver.input.useHandCursor = true;
       screwdriver.input.enableDrag(true, true, true, 0, {width: 60, height: 60});
       screwdriver.events.onInputDown.add(onInputDown, this);
       screwdriver.events.onDragStop.add(onDragStop, this);
-      labGroup.add(screwdriver);
-    var stomach = game.add.sprite(158, 65, 'stomach');
+      // labGroup.add(screwdriver);
+    var stomach = game.add.sprite(158, 60, 'stomach');
       stomach.inputEnabled = true;
       stomach.input.useHandCursor = true;
       stomach.input.enableDrag(true, false, true, 255, {width: 60, height: 60});
       stomach.events.onInputDown.add(onInputDown, this);
       stomach.events.onDragStop.add(onDragStop, this);
-      labGroup.add(stomach);
+      // labGroup.add(stomach);
     var tongue = game.add.sprite(240, 180, 'tongue');
       tongue.inputEnabled = true;
       tongue.input.useHandCursor = true;
       tongue.input.enableDrag(true, true, true, 0, {width: 60, height: 60});
       tongue.events.onInputDown.add(onInputDown, this);
       tongue.events.onDragStop.add(onDragStop, this);
-      labGroup.add(tongue);
+      // labGroup.add(tongue);
     var teeth = game.add.sprite(279, 79, 'teeth');
       teeth.inputEnabled = true;
       teeth.input.useHandCursor = true;
       teeth.input.enableDrag(true, true, true, 0, {width: 60, height: 60});
       teeth.events.onInputDown.add(onInputDown, this);
       teeth.events.onDragStop.add(onDragStop, this);
-      labGroup.add(teeth);
+      // labGroup.add(teeth);
     var skull = game.add.sprite(323, 50, 'skull');
       skull.inputEnabled = true;
       skull.input.useHandCursor = true;
@@ -196,21 +189,21 @@ function popQuestion(){
       // skull.events.onInputOver.add(over, this);
       skull.events.onInputDown.add(onInputDown, this);
       skull.events.onDragStop.add(onDragStop, this);
-      labGroup.add(skull);
+      // labGroup.add(skull);
     var paint = game.add.sprite(10, 156, 'paint');
       paint.inputEnabled = true;
       paint.input.useHandCursor = true;
       paint.input.enableDrag(true, true, true, 0, {width: 60, height: 60});
       paint.events.onInputDown.add(onInputDown, this);
       paint.events.onDragStop.add(onDragStop, this);
-      labGroup.add(paint);
+      // labGroup.add(paint);
     var pelvis = game.add.sprite(76, 129, 'pelvis');
       pelvis.inputEnabled = true;
       pelvis.input.useHandCursor = true;
       pelvis.input.enableDrag(true, true, true, 0, {width:60, height: 60});
       pelvis.events.onInputDown.add(onInputDown, this);
       pelvis.events.onDragStop.add(onDragStop, this);
-      labGroup.add(pelvis);
+      // labGroup.add(pelvis);
     var brain = game.add.sprite(168, 140, 'brain');
       brain.inputEnabled = true;
       brain.input.useHandCursor = true;
@@ -218,95 +211,92 @@ function popQuestion(){
       // brain.events.onInputOver.add(onInputOver, this);
       brain.events.onInputDown.add(onInputDown, this);
       brain.events.onDragStop.add(onDragStop, this);
-      labGroup.add(brain);
+      // labGroup.add(brain);
     var kidney = game.add.sprite(291, 150, 'kidney');
       kidney.inputEnabled = true;
       kidney.input.useHandCursor = true;
       kidney.input.enableDrag(true, true, true, 0, {width:60, height: 60});
       kidney.events.onInputDown.add(onInputDown, this);
       kidney.events.onDragStop.add(onDragStop, this);
-      labGroup.add(kidney);
+      // labGroup.add(kidney);
     var vertebrae = game.add.sprite(0, 216, 'vertebrae');
       vertebrae.inputEnabled = true;
       vertebrae.input.useHandCursor = true;
       vertebrae.input.enableDrag(true, true, true, 0, {width:60, height: 60});
       vertebrae.events.onInputDown.add(onInputDown, this);
       vertebrae.events.onDragStop.add(onDragStop, this);
-      labGroup.add(vertebrae);
+      // labGroup.add(vertebrae);
     var hammer = game.add.sprite(45, 288, 'hammer');
       hammer.inputEnabled = true;
       hammer.input.useHandCursor = true;
       hammer.input.enableDrag(true, true, true, 0, {width:60, height: 60});
       hammer.events.onInputDown.add(onInputDown, this);
       hammer.events.onDragStop.add(onDragStop, this);
-      labGroup.add(hammer);
+      // labGroup.add(hammer);
     var intestine = game.add.sprite(126, 260, 'intestine');
       intestine.inputEnabled = true;
       intestine.input.useHandCursor = true;
       intestine.input.enableDrag(true, true, true, 0, {width:60, height: 60});
       intestine.events.onInputDown.add(onInputDown, this);
       intestine.events.onDragStop.add(onDragStop, this);
-      labGroup.add(intestine);
+      // labGroup.add(intestine);
     var ribs = game.add.sprite(188, 246, 'ribs');
       ribs.inputEnabled = true;
       ribs.input.useHandCursor = true;
       ribs.input.enableDrag(true, true, true, 0, {width:60, height: 60});
       ribs.events.onInputDown.add(onInputDown, this);
       ribs.events.onDragStop.add(onDragStop, this);
-      labGroup.add(ribs);
+      // labGroup.add(ribs);
     var ears = game.add.sprite(278, 296, 'ears');
       ears.inputEnabled = true;
       ears.input.useHandCursor = true;
       ears.input.enableDrag(true, true, true, 0, {width:60, height: 60});
       ears.events.onInputDown.add(onInputDown, this);
       ears.events.onDragStop.add(onDragStop, this);
-      labGroup.add(ears);
+      // labGroup.add(ears);
     var femur = game.add.sprite(324, 233, 'femur');
       femur.inputEnabled = true;
       femur.input.useHandCursor = true;
       femur.input.enableDrag(true, true, true, 0, {width:60, height: 60});
       femur.events.onInputDown.add(onInputDown, this);
       femur.events.onDragStop.add(onDragStop, this);
-      labGroup.add(femur);
+      // labGroup.add(femur);
     var esophagus = game.add.sprite(10, 388, 'esophagus');
       esophagus.inputEnabled = true;
       esophagus.input.useHandCursor = true;
       esophagus.input.enableDrag(true, true, true, 0, {width:60, height: 60});
       esophagus.events.onInputDown.add(onInputDown, this);
       esophagus.events.onDragStop.add(onDragStop, this);
-      labGroup.add(esophagus);
+      // labGroup.add(esophagus);
     var lungs = game.add.sprite(117, 346, 'lungs');
       lungs.inputEnabled = true;
       lungs.input.useHandCursor = true;
       lungs.input.enableDrag(true, true, true, 0, {width:60, height: 60});
       lungs.events.onInputDown.add(onInputDown, this);
       lungs.events.onDragStop.add(onDragStop, this);
-      labGroup.add(lungs);
+      // labGroup.add(lungs);
     var eyes = game.add.sprite(199, 386, 'eyes');
       eyes.inputEnabled = true;
       eyes.input.useHandCursor = true;
       eyes.input.enableDrag(true, true, true, 0, {width:60, height: 60});
       eyes.events.onInputDown.add(onInputDown, this);
       eyes.events.onDragStop.add(onDragStop, this);
-      labGroup.add(eyes);
+      // labGroup.add(eyes);
     var noseJar = this.add.image(264, 349, 'nosejar');
-    labGroup.add(noseJar);
+    // labGroup.add(noseJar);
     var nose = game.add.sprite(278, 369, 'nose');
       nose.inputEnabled = true;
       nose.input.useHandCursor = true;
       nose.input.enableDrag(true, true, true, 0, {width:60, height: 60});
       nose.events.onInputDown.add(onInputDown, this);
       nose.events.onDragStop.add(onDragStop, this);
-      labGroup.add(nose);
-
-    var labShelf = this.add.image(0, 10, 'shelf');
-    labGroup.add(labShelf);
+      // labGroup.add(nose);
 
     var brainJar = this.add.image(165, 140, 'brainjar');
-    labGroup.add(brainJar);
+    // labGroup.add(brainJar);
 
     var monster = this.add.image(536, 57, 'monster');
-    labGroup.add(monster);
+    // labGroup.add(monster);
     var muteBtn = game.add.button(565, 5, 'mute', muteOnClick, this);
     muteBtn.inputEnabled = true;
     var helpBtn = game.add.button(604, 5, 'help', helpPopup, this);
@@ -316,21 +306,16 @@ function popQuestion(){
       dragToLegboneArrow.anchor.setTo(0.5, 0.5);
     var dragToLegboneText = this.add.image(480, 75, 'drag-text');
       dragToLegboneText.anchor.setTo(0.5, 0.5);
-      labGroup.add(dragToLegboneArrow);
-      labGroup.add(dragToLegboneText);
 
     var itemsCounterText = this.add.text(596, 370, itemsNeeded, itemsCountStyle);
     itemsCounterText.anchor.set(0.5, 0.5);
     itemsCounterText.stroke = '#F9F099';
     itemsCounterText.strokeThickness = '16';
-    // labGroup.add(itemsCounterText);
 
     var itPng = this.add.image(600, 400, 'items-needed');
     itPng.anchor.set(0.5, 0.5);
-    // labGroup.add(itPng);
     itemsCounterText.bringToTop();
           function itemsCount() {
-            // text: game.add.text(566, 300, itemsNeeded)
             itemsCounterText.setText(itemsNeeded);
           };
 
@@ -340,16 +325,22 @@ function popQuestion(){
       drLegbone.inputEnabled = true;
       drLegbone.input.useHandCursor = true;
       drLegbone.events.onInputDown.add(openHint, this);
+      messageGroup.bringToTop(game, this);
       drLegbone.bringToTop();
-      labGroup.add(drLegbone);
-      console.log("transparency of all" + labGroup.alpha);
+      // labGroup.add(drLegbone);
+      // console.log("transparency of all" + labGroup.alpha);
       // labGroup.alpha = 1;
 
       var swishSound = game.add.sound('swish');
       // labGroup.bringToTop();
 
     //start the main game loop!
+
     openHint();
+
+    function setBubble(){
+      bubble = game.add.image(game.width/6, game.height/6, 'speechBubble');
+    }
 
     function returnToOrigin(spriteSelected, originX, originY) {
         console.log('returnToOrigin is running');
@@ -358,7 +349,6 @@ function popQuestion(){
         spriteSelected.moveDown();
         var spriteFadeIn = game.add.tween(spriteSelected);
         spriteFadeIn.start(spriteFadeIn.to({alpha:1}, 1000, Phaser.Easing.Linear.In, true, 0));
-
     }
         // function over(sprite) {
         //   sprite.loadTexture(spriteSelected);
@@ -379,8 +369,6 @@ function popQuestion(){
                 originX: originX,
                 originY: originY
             }
-
-
           }
 
           function onInputOver(sprite){
@@ -388,7 +376,6 @@ function popQuestion(){
           }
 
         function onDragStop(sprite, pointer) {
-
                 if (pointer.x >= 420 && pointer.x <= 530 && pointer.y >= 165 ) {
                   evalItem(sprite, pointer);
                   console.log('onDragStop sprite= ' + sprite.key);
@@ -400,13 +387,15 @@ function popQuestion(){
 
         function openHint() {
 
-            var bubbleBG = messageGroup.create(game.width/2, game.height/2-60, 'speechBubble');
-            var hintText = game.add.bitmapText(game.width/2,game.height/2-95, 'avenir', questionSelected.hint, 15);
-            messageGroup.add(hintText);
-            messageGroup.alpha = 0;
+            // messageGroup.alpha = 0;
+            // var bubble = messageGroup.create(game.width/2, game.height/2-60, 'speechBubble');
+            var bubble = game.add.image(game.width/2, game.height/2-60, 'speechBubble');
+            bubble.anchor.setTo(0.5, 0.5);
+            var hintText = game.add.bitmapText(game.width/2, game.height/2-95, 'avenir', questionSelected.hint, 15);
             hintText.maxWidth = 350;
             hintText.anchor.setTo(0.5, 0.5);
-            bubbleBG.anchor.setTo(0.5, 0.5);
+
+            // messageGroup.add(hintText);
             var contBtn = game.add.button(game.width/2, 190, 'continueButton', minHint, messageGroup);
             contBtn.anchor.setTo(0.5, 0.5);
             messageGroup.scale.set(0);
@@ -421,22 +410,15 @@ function popQuestion(){
             drLegbone.bringToTop();
 
             function minHint() {
-              // var tweenOut =
-                game.add.tween(messageGroup.scale).to({x:0, y:0}, 700, Phaser.Easing.Elastic.Out, true);
-                game.add.tween(contBtn.scale).to({x:0, y: 0}, 700, Phaser.Easing.Elastic.Out, true);
                 drLegbone.loadTexture('drWaiting');
+                // game.add.tween(messageGroup.scale).to({x:0, y:0}, 700, Phaser.Easing.Elastic.Out, true);
+                game.add.tween(contBtn.scale).to({x:0, y: 0}, 700, Phaser.Easing.Elastic.Out, true);
+                game.world.remove(contBtn);
+                game.world.remove(hintText);
+                game.world.remove(bubble);
 
 
-                follow();
-                function follow(pointer){
-                  // var eyeball1 = new Phaser.Circle(465, 230, 16);
-                  // var pupil1 = new Phaser.Circle(465, 230, 4);
-                  // pupil1.inputEnabled = true;
-                  // var pupil2 = new Phaser.Circle(490,230, 4);
-                  //
-                  // game.debug.geom(pupil1, "#313131");
-                  // game.debug.geom(pupil2, "#313131");
-              }
+
             }
         }
         function loadNext(){
@@ -448,10 +430,12 @@ function popQuestion(){
           legboneNext.onComplete.add(nextPopup, this);
 
           function nextPopup(){
-          messageGroup = game.add.group();
-          var bubbleBG = messageGroup.create(game.width/6, game.height/6, 'speechBubble');
-          var hintText = game.add.bitmapText(140, 90, 'avenir', questionSelected.hint, 15);
-          messageGroup.add(hintText);
+          // messageGroup = game.add.group();
+
+          bubble = game.add.image(game.width/6, game.height/6, 'speechBubble');
+          // bubble.anchor.setTo(0.5, 0.5);
+          hintText = game.add.bitmapText(140, 90, 'avenir', questionSelected.hint, 15);
+          // messageGroup.add(hintText);
           hintText.maxWidth = 350;
           var contBtn = game.add.button(220, 160, 'continueButton', startPlay, messageGroup);
           drLegbone.bringToTop();
@@ -459,6 +443,9 @@ function popQuestion(){
           function startPlay() {
             var tweenOut = game.add.tween(messageGroup.scale).to({x:3000, y:3000}, 900, Phaser.Easing.Elastic.Out, true);
             game.add.tween(contBtn.position).to({x:900, y: 160}, 1000, Phaser.Easing.Elastic.InOut, true);
+            game.world.remove(hintText);
+            bubble.scale.x = 0;
+            bubble.scale.y = 0;
             drLegbone.loadTexture('drWaiting');
 
             // game.add.tween(messageGroup.scale).to({x:0, y:0}, 700, Phaser.Easing.Elastic.Out, true);
@@ -477,30 +464,38 @@ function popQuestion(){
           correct = game.add.audio('ding');
           correct.play();
           drLegbone.loadTexture('goodJobDr');
-          messageGroup = game.add.group();
-          messageGroup.add(drLegbone);
-          bubble = messageGroup.create(game.width/6, game.height/6, 'speechBubble');
-          // messageGroup.add(spriteSelected);
-          drLegbone.bringToTop();
-          bubble.sendToBack();
-          game.world.moveDown(messageGroup);
+          // bubble = messageGroup.create(game.width/6, game.height/6, 'speechBubble');
+          bubble = game.add.image(game.width/6, game.height/6, 'speechBubble');
+          // bubble.sendToBack();
+          // game.world.moveDown(messageGroup);
           spriteSelected.anchor.setTo(0.5,0.5);
           spriteSelected.position.x = 550;
           spriteSelected.position.y = 340;
           spriteSelected.bringToTop();
 
           console.log(spriteSelected.parent);
-          messageGroup.scale.x = 0;
-          messageGroup.scale.y = 0;
+          // messageGroup.scale.x = 0;
+          // messageGroup.scale.y = 0;
+          // messageGroup.z = 1;
+          console.log('messageGroup z index (before tweens) = '+ messageGroup.z);
 
-          var successTween = game.add.tween(messageGroup.scale).to( {x:1, y:1}, 500, Phaser.Easing.Elastic.In, true);
+          var messageGroupScaleIn = game.add.tween(messageGroup);
+          messageGroupScaleIn.start(messageGroup.scale).to( {x:1, y:1}, 500, Phaser.Easing.Elastic.In, true);
+
           var addToBtn = game.add.button(220, 160, 'addToCreature', addToCreateAnim, messageGroup);
-          var successText = game.add.bitmapText(140,90, 'avenir', questionSelected.answer, 15, messageGroup);
-          successText.maxWidth = 350;
+          // var successText = game.add.bitmapText(140,90, 'avenir', questionSelected.answer, 15, messageGroup);
+          hintText = game.add.bitmapText(140,90, 'avenir', questionSelected.answer, 15);
+          hintText.maxWidth = 350;
 
-          addToBtn.scale.x = 0;
-          addToBtn.scale.y = 0;
+
+          // addToBtn.scale.x = 0;
+          // addToBtn.scale.y = 0;
           game.add.tween(addToBtn.scale).to({x:1, y:1}, 300, Phaser.Easing.Elastic.In, true);
+          drLegbone.bringToTop();
+          spriteSelected.bringToTop();
+          // console.log(labGroup);
+
+          console.log('messageGroup z index = '+ messageGroup.z);
 
 
                 function addToCreateAnim(){
@@ -509,8 +504,6 @@ function popQuestion(){
                   game.add.tween(drLegbone.position).to({x:1000}, 1000, Phaser.Easing.Elastic.Out, true);
                   var swishFX = game.add.sound('swishFX');
                   swishFX.play();
-                  messageGroup.scale.x = 0;
-                  messageGroup.scale.y = 0;
                   addToBtn.scale.x = 0;
                   console.log("success: " + questions);
                   // game.world.remove(spriteSelected);
@@ -519,11 +512,14 @@ function popQuestion(){
                   // game.world.remove(addToBtn);
                   var blood = game.add.sprite(400, 50, 'blood');
                   var addingTo = game.add.sound('powersaw');
+                  game.world.remove(bubble);
+                  game.world.remove(hintText);
                   addingTo.play();
                   var addingItemToCreature = blood.animations.add('addingItemToCreature');
                   blood.animations.play('addingItemToCreature', 15, false);
                   addingItemToCreature.onComplete.add(updateItemsNumber, this);
-                  labGroup.remove(spriteSelected);
+                  // labGroup.remove(spriteSelected);
+
                   spriteSelected.destroy();
                   // addingItemToCreature.onComplete.add(loadNext, this);
                   // commented out bc it was loading the next hint before the dr returns to the screen
@@ -542,21 +538,24 @@ function popQuestion(){
                 successAlert();
                 }  else { //run the second hint
                 returnToOrigin(spriteSelected, originX, originY);
-                var wrongAlert = game.add.sound('wrong');
-                wrongAlert.play();
-                messageGroup = game.add.group();
-                let drMsg = messageGroup.create(game.width/6, game.height/6, 'speechBubble');
+                var wrongItemAlert = game.add.sound('wrong');
+                wrongItemAlert.play();
+                // messageGroup = game.add.group();
                   // start group scaled to 0, tween up
-                messageGroup.scale.x = 0;
-                messageGroup.scale.y = 0;
+                // messageGroup.scale.x = 0;
+                // messageGroup.scale.y = 0;
 
                 // load second hint and continue button
                 var loadRequest = game.add.tween(messageGroup.scale).to( {x:1, y:1}, 600, Phaser.Easing.Elastic.InOut, true);
-                var contBtn = game.add.button(220, 160, 'continueButton', tryAgain, messageGroup);
-                var hintText = game.add.bitmapText(140,90, 'avenir', questionSelected.hint2, 15, messageGroup);
+
+                // bubble = messageGroup.create(game.width/6, game.height/6, 'speechBubble');
+                bubble = game.add.image(game.width/6, game.height/6, 'speechBubble');
+                contBtn = game.add.button(220, 160, 'continueButton', tryAgain, messageGroup);
+                hintText = game.add.bitmapText(140,90, 'avenir', questionSelected.hint2, 15);
                 hintText.maxWidth = 350;
                 drLegbone.bringToTop();
                 drLegbone.loadTexture('drWaiting');
+
                 // let drLegbone = game.add.sprite(game.width-230, game.height-275, 'drClue');
                 contBtn.scale.x = 0;
                 contBtn.scale.y = 0;
@@ -564,6 +563,10 @@ function popQuestion(){
                 function tryAgain(){
                     game.add.tween(messageGroup.position).to({x:900, y:900}, 600, Phaser.Easing.Elastic.Out, true);
                     game.add.tween(contBtn.position).to({x:900, y: 160}, 900, Phaser.Easing.Elastic.Out, true);
+                    bubble.scale.x = 0;
+                    bubble.scale.y = 0;
+                    hintText.scale.x = 0;
+                    hintText.scale.y = 0;
                   } //move to top of outer expression?
                 }
               }
@@ -606,8 +609,8 @@ function popQuestion(){
                         // items tween out
                                     // monster tweens out
 
-            var clearStageTween = game.add.tween(labGroup);
-            clearStageTween.start(clearStageTween.to({alpha: 0 }, 1500, "Linear", true));
+            // var clearStageTween = game.add.tween(labGroup);
+            // clearStageTween.start(clearStageTween.to({alpha: 0 }, 1500, "Linear", true));
 
 
             // final anim goes here
@@ -619,9 +622,20 @@ function popQuestion(){
 
         }
 
+
+
+
+
         }
         // end create
 update() {
+  var winKey;
+  winKey = game.input.keyboard.addKey(Phaser.Keyboard.UP);
+
+  if (winKey.isDown)
+  {
+    game.state.start('Win');
+  }
 
 }
   // end update

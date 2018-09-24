@@ -9,13 +9,14 @@ class PrePlay extends Phaser.State {
       create() {
 
         this.add.image(0, 0, 'lab');
+        var labShelf = this.add.image(-500, 10, 'shelf');
         // create "items" group to tween simultaneously
         var itemsGroup = game.add.group();
             var heartPre = itemsGroup.create(15, 50, 'heart');
             var screwdriver = itemsGroup.create(65, 67, 'screwdriver');
-            var stomachPre = itemsGroup.create(158, 65, 'stomach');
+            var stomachPre = itemsGroup.create(158, 60, 'stomach');
             var tonguePre = itemsGroup.create(240, 180, 'tongue');
-            var teethPre = itemsGroup.create(279, 79, 'teeth');
+            var teethPre = itemsGroup.create(269, 79, 'teeth');
             var skullPre = itemsGroup.create(323, 50, 'skull');
             var paintPre = itemsGroup.create(10, 156, 'paint');
             var pelvisPre = itemsGroup.create(76, 129, 'pelvis');
@@ -31,12 +32,11 @@ class PrePlay extends Phaser.State {
             var esophagusPre = itemsGroup.create(10, 388, 'esophagus');
             var lungsPre = itemsGroup.create(117, 346, 'lungs');
             var eyesPre = itemsGroup.create(199, 386, 'eyes');
-            var nosejarPre =itemsGroup.create(264, 349, 'nosejar');
+            var nosejarPre = itemsGroup.create(264, 349, 'nosejar');
             var nosePre = itemsGroup.create(278, 369, 'nose');
 
 
         // other lab things
-        var labShelf = this.add.image(-500, 10, 'shelf');
         var monsterIn = this.add.image(936, 57, 'monster');
 
         // controls
