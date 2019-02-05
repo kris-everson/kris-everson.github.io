@@ -1,0 +1,28 @@
+{"frames": {
+
+"lungs-hover.png":
+{
+	"frame": {"x":1,"y":1,"w":72,"h":73},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":72,"h":73},
+	"sourceSize": {"w":72,"h":73}
+},
+"lungs.png":
+{
+	"frame": {"x":75,"y":1,"w":66,"h":67},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":66,"h":67},
+	"sourceSize": {"w":66,"h":67}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "lungs.png",
+	"format": "RGBA8888",
+	"size": {"w":142,"h":75},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:9ac232af6245493f8b9ff56565415119:a17d0ef8637ce217f44ba1bb6ae4b09f:f3936d983ad40642cd5b69268207df58$"
+}
+}
