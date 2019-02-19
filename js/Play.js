@@ -364,10 +364,11 @@ function popQuestion(){
             }
           }
 
-          // function onInputOver(sprite){
-          // // do a thing
-          // console.log('hovering over' + sprite.key);
-          // }
+          function onInputOver(sprite){
+          // do a thing
+          console.log('hovering over ' + sprite.key);
+
+          }
 
         function onDragStop(sprite, pointer) {
                 if (pointer.x >= 420 && pointer.x <= 530 && pointer.y >= 165 ) {
