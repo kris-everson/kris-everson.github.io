@@ -53,7 +53,7 @@ class Preloader extends Phaser.State {
     this.load.image('swish', 'assets/sprites/swish.png');
     this.load.image('letsGetStarted', 'assets/lets-get-started.png');
     this.load.image('speechBubble', 'assets/speech-bubble.png');
-    this.load.image('mute', 'assets/buttons/mute.png');
+    // this.load.image('mute', 'assets/buttons/mute.png');
     // game.load.spritesheet('muteButton', 'assets/buttons/mute.png', 37, 31, 1);
     this.load.image('help', 'assets/sprites/help-icon.png');
     this.load.image('drag-to', 'assets/sprites/drag-to-arrow.png');
