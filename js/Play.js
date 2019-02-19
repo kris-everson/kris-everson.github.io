@@ -1,7 +1,6 @@
 class Play extends Phaser.State {
 
-preload() {
-}
+preload() {}
 
 create() {
 
@@ -14,12 +13,8 @@ var originY;
 var questionSelected;
 var correct;
 var itemsNeeded = 6;
-// messageGroup.add(bubble);
-// var msgAndDoctorGroup = game.add.group();
-// var labGroup = game.add.group();
 var messageGroup = game.add.group();
 var contBtn;
-
 
 
 ////////////////////////
@@ -129,6 +124,7 @@ femurQuery.keyName = 'femur';
 var questions = [lungsQuery, kidneyQuery, skullQuery, brainQuery, pelvisQuery, heartQuery, teethQuery, earQuery, noseQuery, eyesQuery, stomachQuery, intestineQuery, tongueQuery, ribsQuery, esophagusQuery, vertebraeQuery, femurQuery];
 
 questions.sort(function(){return Math.round(Math.random());});
+
 // randomly sort array of questions
 console.log('questions array randomly sorted: ' + questions);
 popQuestion();
@@ -146,7 +142,8 @@ function popQuestion(){
   var labShelf = this.add.image(0, 10, 'shelf');
   // labGroup.add(labShelf);
   // labGroup.add(labBG);
-    // create "items" group to tween simultaneously
+
+    // create "items" group for each sprite, so they can tween simultaneously
     var heart = game.add.sprite(15, 50, 'heart');
       heart.inputEnabled = true;
       heart.input.useHandCursor = true;
@@ -208,7 +205,7 @@ function popQuestion(){
       brain.inputEnabled = true;
       brain.input.useHandCursor = true;
       brain.input.enableDrag(true, true, true, 0, {width: 60, height: 60});
-      // brain.events.onInputOver.add(onInputOver, this);
+      brain.events.onInputOver.add(onInputOver, this);
       brain.events.onInputDown.add(onInputDown, this);
       brain.events.onDragStop.add(onDragStop, this);
       // labGroup.add(brain);
@@ -350,10 +347,6 @@ function popQuestion(){
         var spriteFadeIn = game.add.tween(spriteSelected);
         spriteFadeIn.start(spriteFadeIn.to({alpha:1}, 1000, Phaser.Easing.Linear.In, true, 0));
     }
-        // function over(sprite) {
-        //   sprite.loadTexture(spriteSelected);
-        //   game.add.text(sprite.key, this)
-        // } this doesn't do anything?
 
         function onInputDown(sprite, pointer) {
             console.log(sprite.key);
@@ -373,6 +366,7 @@ function popQuestion(){
 
           function onInputOver(sprite){
           // do a thing
+          console.log('hovering over' + sprite.key);
           }
 
         function onDragStop(sprite, pointer) {
