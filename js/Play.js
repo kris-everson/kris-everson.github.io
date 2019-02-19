@@ -630,11 +630,11 @@ update() {
   {
     game.state.start('Win');
   }
-  
-  function onInputOver(sprite){
-    // do a thing
-    console.log('hovering over' + sprite.key);
-    }
+
+  // function onInputOver(sprite){
+  //   // do a thing
+  //   console.log('hovering over' + sprite.key);
+  //   }
 
 }
 
