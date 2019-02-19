@@ -6,7 +6,7 @@ class Title extends Phaser.State {
 
   preload() {
         game.load.atlas('button', 'assets/buttons/button_texture_atlas.png', 'assets/buttons/button_texture_atlas.json');
-        game.load.atlas('muteButton', 'assets/buttons/mute.png', 'assets/buttons/mute.json');
+        game.load.atlas('mute', 'assets/buttons/mute.png', 'assets/buttons/mute.json');
         game.load.audio('laugh', ['assets/audio/dr-laugh.mp3', 'assets/audio/dr-laugh.ogg']);
         game.load.audio('bubbling', ['assets/audio/lab-noises.mp3']);
 
@@ -17,9 +17,6 @@ class Title extends Phaser.State {
 
     bubbling = game.add.audio('bubbling');
     bubbling.loopFull(0.6);
-
-
-
     drLaugh = game.add.audio('laugh');
     drLaugh.play();
     bubbling.play();
@@ -50,7 +47,7 @@ class Title extends Phaser.State {
     // textTween.start(textTween.to({x:300, y: 280}, 900, Phaser.Easing.Elastic.InOut, true, 0));
 
 
-    var muteButton = game.add.button(565, 5, 'muteButton', muteOnClick, this, 0, 0, 1);
+    var muteButton = game.add.button(565, 5, 'mute', muteOnClick, this, 0, 0, 1);
     var helpBtn = game.add.button(604, 5, 'help', helpPopup, this);
     muteButton.inputEnabled = true;
     helpBtn.inputEnabled = true;
