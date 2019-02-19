@@ -4,6 +4,7 @@ preload() {}
 
 create() {
 
+// references for global use
 var spriteSelected;
 var bubble;
 var hintText;
@@ -18,6 +19,8 @@ var contBtn;
 
 
 ////////////////////////
+
+// create Objects for each item on the shelf, along with properties for each
 
 var lungsQuery = new Object();
 lungsQuery.hint = 'Quick! The creature needs a way to get some oxygen into his body.';
@@ -121,12 +124,14 @@ femurQuery.hint2 = "Not quite.";
 femurQuery.answer = "That's right!";
 femurQuery.keyName = 'femur';
 
+// create "questions" array 
 var questions = [lungsQuery, kidneyQuery, skullQuery, brainQuery, pelvisQuery, heartQuery, teethQuery, earQuery, noseQuery, eyesQuery, stomachQuery, intestineQuery, tongueQuery, ribsQuery, esophagusQuery, vertebraeQuery, femurQuery];
 
-questions.sort(function(){return Math.round(Math.random());});
-
 // randomly sort array of questions
+questions.sort(function(){return Math.round(Math.random());});
 console.log('questions array randomly sorted: ' + questions);
+
+// pop out randomly selected question 
 popQuestion();
 
 function popQuestion(){
@@ -135,13 +140,12 @@ function popQuestion(){
   console.log("hint " + questionSelected.hint);
   return questionSelected;
 }
-////////////////////
+
+//// create items on shelf
 
   var labBG = this.add.image(0, 0, 'lab');
   labBG.sendToBack();
   var labShelf = this.add.image(0, 10, 'shelf');
-  // labGroup.add(labShelf);
-  // labGroup.add(labBG);
 
     // create "items" group for each sprite, so they can tween simultaneously
     var heart = game.add.sprite(15, 50, 'heart');
@@ -183,7 +187,7 @@ function popQuestion(){
       skull.inputEnabled = true;
       skull.input.useHandCursor = true;
       skull.input.enableDrag(true, true, true, 0, {width:70, height: 70});
-      // skull.events.onInputOver.add(over, this);
+      skull.events.onInputOver.add(over, this);
       skull.events.onInputDown.add(onInputDown, this);
       skull.events.onDragStop.add(onDragStop, this);
       // labGroup.add(skull);
@@ -382,15 +386,12 @@ function popQuestion(){
 
         function openHint() {
 
-            // messageGroup.alpha = 0;
-            // var bubble = messageGroup.create(game.width/2, game.height/2-60, 'speechBubble');
             var bubble = game.add.image(game.width/2, game.height/2-60, 'speechBubble');
             bubble.anchor.setTo(0.5, 0.5);
             var hintText = game.add.bitmapText(game.width/2, game.height/2-95, 'avenir', questionSelected.hint, 15);
             hintText.maxWidth = 350;
             hintText.anchor.setTo(0.5, 0.5);
 
-            // messageGroup.add(hintText);
             var contBtn = game.add.button(game.width/2, 190, 'continueButton', minHint, messageGroup);
             contBtn.anchor.setTo(0.5, 0.5);
             messageGroup.scale.set(0);
@@ -516,10 +517,7 @@ function popQuestion(){
                   // labGroup.remove(spriteSelected);
 
                   spriteSelected.destroy();
-                  // addingItemToCreature.onComplete.add(loadNext, this);
-                  // commented out bc it was loading the next hint before the dr returns to the screen
-                  // moving loadNext call to the updateItemsNumber function
-                  // updateItemsNumber();
+
 
 
                 }
@@ -599,18 +597,6 @@ function popQuestion(){
             messageGroup.scale.y = 0;
 
 
-
-            // shelf tween
-                        // items tween out
-                                    // monster tweens out
-
-            // var clearStageTween = game.add.tween(labGroup);
-            // clearStageTween.start(clearStageTween.to({alpha: 0 }, 1500, "Linear", true));
-
-
-            // final anim goes here
-
-
             game.state.start('Win');
 
           }
@@ -632,10 +618,6 @@ update() {
     game.state.start('Win');
   }
 
-  // function onInputOver(sprite){
-  //   // do a thing
-  //   console.log('hovering over' + sprite.key);
-  //   }
 
 }
 
