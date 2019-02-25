@@ -141,12 +141,17 @@ function popQuestion(){
   return questionSelected;
 }
 
+
 //// create items on shelf
 
   var labBG = this.add.image(0, 0, 'lab');
   labBG.sendToBack();
   var labShelf = this.add.image(0, 10, 'shelf');
+  // create input event handler for hovering over sprites (little info bubble)
+  // 
+  game.input.addMoveCallback(this);  
 
+  }
     // create "items" group for each sprite, so they can tween simultaneously
     var heart = game.add.sprite(15, 50, 'heart');
       heart.inputEnabled = true;
@@ -154,6 +159,7 @@ function popQuestion(){
       heart.input.enableDrag(true, true, true, 0, {width: 60, height: 60});
       heart.events.onInputDown.add(onInputDown, this);
       heart.events.onDragStop.add(onDragStop, this);
+
       // labGroup.add(heart);
     var screwdriver = game.add.sprite(65, 67, 'screwdriver');
       screwdriver.inputEnabled = true;
@@ -602,6 +608,15 @@ function popQuestion(){
         }
         // end create
 update() {
+
+  if (spriteSelected.pointerOver()))
+  {
+    spriteSelected.alpha = 0.5;
+  } else
+  {
+    spriteSelected.alpha = 1;
+  }
+
   var winKey;
   winKey = game.input.keyboard.addKey(Phaser.Keyboard.UP);
 
