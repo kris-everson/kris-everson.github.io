@@ -291,13 +291,11 @@ function popQuestion(){
       nose.input.enableDrag(true, true, true, 0, {width:60, height: 60});
       nose.events.onInputDown.add(onInputDown, this);
       nose.events.onDragStop.add(onDragStop, this);
-      // labGroup.add(nose);
+
 
     var brainJar = this.add.image(165, 140, 'brainjar');
-    // labGroup.add(brainJar);
 
     var monster = this.add.image(536, 57, 'monster');
-    // labGroup.add(monster);
     var muteBtn = game.add.button(565, 5, 'mute', muteOnClick, this);
     muteBtn.inputEnabled = true;
     var helpBtn = game.add.button(604, 5, 'help', helpPopup, this);
@@ -328,9 +326,6 @@ function popQuestion(){
       drLegbone.events.onInputDown.add(openHint, this);
       messageGroup.bringToTop(game, this);
       drLegbone.bringToTop();
-      // labGroup.add(drLegbone);
-      // console.log("transparency of all" + labGroup.alpha);
-      // labGroup.alpha = 1;
 
       var swishSound = game.add.sound('swish');
       // labGroup.bringToTop();
@@ -368,7 +363,7 @@ function popQuestion(){
             }
           }
 
-          function onInputOver(sprite){
+          function onInputOver(sprite, pointer){
           // do a thing
           console.log('hovering over ' + sprite.key);
 
@@ -595,8 +590,6 @@ function popQuestion(){
             // lightning
             messageGroup.scale.x = 0;
             messageGroup.scale.y = 0;
-
-
             game.state.start('Win');
 
           }
