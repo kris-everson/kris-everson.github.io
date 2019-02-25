@@ -187,7 +187,7 @@ function popQuestion(){
       skull.inputEnabled = true;
       skull.input.useHandCursor = true;
       skull.input.enableDrag(true, true, true, 0, {width:70, height: 70});
-      skull.events.onInputOver.add(over, this);
+      // skull.events.onInputOver.add(over, this);
       skull.events.onInputDown.add(onInputDown, this);
       skull.events.onDragStop.add(onDragStop, this);
       // labGroup.add(skull);
@@ -591,7 +591,6 @@ function popQuestion(){
             messageGroup.scale.x = 0;
             messageGroup.scale.y = 0;
             game.state.start('Win');
-
           }
 
         }
