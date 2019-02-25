@@ -609,7 +609,7 @@ function popQuestion(){
         // end create
 update() {
 
-  if (spriteSelected.pointerOver()))
+  if (spriteSelected.pointerOver())
   {
     spriteSelected.alpha = 0.5;
   } else
